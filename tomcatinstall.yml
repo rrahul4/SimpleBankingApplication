@@ -17,7 +17,7 @@
     when: ansible_distribution=="Fedora"
   - name: Copybook War File
     copy: 
-      src: /target/SimpleBankingApplication-0.1.0-SNAPSHOT.war 
+      src: target/SimpleBankingApplication-0.1.0-SNAPSHOT.war 
       dest: /var/lib/tomcat9/webapps/SimpleBankingApplication-0.1.0-SNAPSHOT.war
       mode: 0755
     when: ansible_distribution=="Ubuntu"
@@ -30,7 +30,7 @@
       - Restart tomcat9
   - name: Copybook War File
     copy: 
-      src: /target/SimpleBankingApplication-0.1.0-SNAPSHOT.war 
+      src: target/SimpleBankingApplication-0.1.0-SNAPSHOT.war 
       dest: /var/lib/tomcat/webapps/SimpleBankingApplication-0.1.0-SNAPSHOT.war
       mode: 0755   
     when: ansible_distribution=="Fedora"     
