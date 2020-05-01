@@ -84,7 +84,7 @@ properties([
     
     if (params.NexusPush) {
         stage('Nexus Push'){
-            nexusPublisher nexusInstanceId: 'MyNexus', nexusRepositoryId: 'Rahul_Nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/SimpleBankingApplication.jar']], mavenCoordinate: [artifactId: '$BUILD_TIMESTAMP', groupId: 'SimpleBankingApplication', packaging: 'jar', version: '$BUILD_ID']]]
+            nexusPublisher nexusInstanceId: 'MyNexus', nexusRepositoryId: 'Rahul_Nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/SimpleBankingApplication-0.1.0-SNAPSHOT.jar']], mavenCoordinate: [artifactId: '$BUILD_TIMESTAMP', groupId: 'SimpleBankingApplication', packaging: 'jar', version: '$BUILD_ID']]]
         }
     }
    if (params.AnsibleDeploy) {
@@ -95,13 +95,13 @@ properties([
     
     if (params.DockerImageBuild) {
         stage('Docker Image Build') {
-            sh 'sudo docker build . -t rrahul4/SimpleBankingApplication:$BUILD_NUMBER'
+            sh 'sudo docker build . -t rrahul4/simplebankingapplication:$BUILD_NUMBER'
         }
     }
     
     if (params.DockerImagePush) {
         stage('Docker Image Push') {
-            sh 'sudo docker push rrahul4/SimpleBankingApplication:$BUILD_NUMBER'
+            sh 'sudo docker push rrahul4/simplebankingapplication:$BUILD_NUMBER'
         }
     }
 }
